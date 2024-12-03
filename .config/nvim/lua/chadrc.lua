@@ -23,6 +23,8 @@ M.base46 = {
       "clangd",
       "clang-format",
       "codelldb",
+      "black",
+      "pyright",
     },
   },
   -- plugins = "custom.plugins",

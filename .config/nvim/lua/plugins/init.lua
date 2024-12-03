@@ -58,6 +58,18 @@ return {
     opts = {},
   },
 
+  {
+    "stevearc/aerial.nvim",
+    opts = {},
+    lazy = false,
+  },
+
+  {
+    "kevinhwang91/nvim-ufo",
+    opts = {},
+    dependencies = { "kevinhwang91/promise-async" },
+  },
+
   -- {
   -- 	"nvim-treesitter/nvim-treesitter",
   -- 	opts = {

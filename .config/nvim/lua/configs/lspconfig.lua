@@ -4,9 +4,13 @@ require("nvchad.configs.lspconfig").defaults()
 local lspconfig = require "lspconfig"
 
 -- EXAMPLE
-local servers = { "html", "cssls", "clangd" }
+local servers = { "html", "cssls", "clangd", "pyright" }
 local nvlsp = require "nvchad.configs.lspconfig"
 
+nvlsp.capabilities.textDocument.foldingRange = {
+  dynamicRegistration = false,
+  lineFoldingOnly = true,
+}
 -- lsps with default config
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
