@@ -1,0 +1,81 @@
+{
+    "border": "normal",
+    "floating": "auto_off",
+    "layout": "splitv",
+    "marks": [],
+    "percent": 0.5,
+    "type": "con",
+    "nodes": [
+        {
+            "border": "normal",
+            "current_border_width": 3,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 1388,
+               "width": 1274,
+               "x": 0,
+               "y": 0
+            },
+            "marks": [],
+            "name": "Volume Control",
+            "percent": 0.5,
+            "swallows": [
+               {
+               "class": "^Pavucontrol$",
+               "instance": "^pavucontrol$",
+               //"machine": "^FusionArch$",
+               //"title": "^Volume\\ Control$"
+               }
+            ],
+            "type": "con"
+        },
+        {
+            "border": "normal",
+            "current_border_width": 3,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 477,
+               "width": 656,
+               "x": 0,
+               "y": 0
+            },
+            "marks": [],
+            "name": "/usr/bin/bash",
+            "percent": 0.5,
+            "swallows": [
+               {
+               "class": "^Terminator$",
+               "instance": "^terminator$",
+               // "machine": "^FusionArch$",
+               // "title": "^\\/user\\/bin\\/bash$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
+
+{
+    "border": "normal",
+    "current_border_width": 3,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 1388,
+       "width": 2554,
+       "x": 3843,
+       "y": 25
+    },
+    "marks": [],
+    "name": "WeLiveInANightmare — A PipeWire Graph Qt GUI Interface",
+    "percent": 0.5,
+    "swallows": [
+       {
+       "class": "^qpwgraph$",
+       "instance": "^qpwgraph$",
+       //"machine": "^FusionArch$",
+       //"title": "^WeLiveInANightmare\\ \\—\\ A\\ PipeWire\\ Graph\\ Qt\\ GUI\\ Interface$"
+       }
+    ],
+    "type": "con"
+}
+
