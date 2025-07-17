@@ -14,6 +14,26 @@ return {
   },
 
   {
+    "pmizio/typescript-tools.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    -- lazy = false,
+    opts = {
+      on_attach = require("nvchad.configs.lspconfig").on_attach,
+      on_init = require("nvchad.configs.lspconfig").on_init,
+      capabilities = require("nvchad.configs.lspconfig").capabilities,
+    },
+  },
+  --
+  -- {
+  --   "windwp/nvim-ts-autotag",
+  --   lazy = false,
+  --   opts = {
+  --     enable_close = true, -- Auto close tags
+  --     enable_rename = true, -- Auto rename pairs of tags
+  --   },
+  -- },
+
+  {
     "rcarriga/nvim-dap-ui",
     event = "VeryLazy",
     dependencies = {

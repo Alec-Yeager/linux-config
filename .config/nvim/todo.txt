@@ -1,0 +1,3 @@
+remove lsp-lines
+change <space> l to :LspRestart
+quick split commands

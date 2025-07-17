@@ -25,6 +25,8 @@ M.base46 = {
       "codelldb",
       "black",
       "pyright",
+      "prettier",
+      "emmet-language-server",
     },
   },
   -- plugins = "custom.plugins",

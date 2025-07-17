@@ -32,6 +32,7 @@ dofile(vim.g.base46_cache .. "statusline")
 require "options"
 require "nvchad.autocmds"
 
+vim.cmd [[highlight TabLineFill ctermfg=black]]
 --vim.api.nvim_set_hl(0, "Normal", { bg = "none"})
 --vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none"})
 --vim.api.nvim_set_hl(0, "NormalNC", { bg = "none"})

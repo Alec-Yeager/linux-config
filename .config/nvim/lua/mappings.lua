@@ -13,6 +13,18 @@ map("", "<leader>l", require("lsp_lines").toggle, { desc = "Toggle lsp_lines" })
 map("n", "zR", require("ufo").openAllFolds, { desc = "open ufo folds" })
 map("n", "zM", require("ufo").closeAllFolds, { desc = "close ufo folds" })
 map("n", "<leader>a", "<cmd> AerialToggle! <CR>", { desc = "Toggle Aerial overview" })
+map("n", "<leader>v", "")
+-- Open vertical split
+map("n", "<leader>v", ":vsplit<CR>")
+map("n", "<leader>h", ":split<CR>")
+
+-- Open vertical terminal
+map("n", "<leader>tv", ":vsplit | terminal<CR>")
+map("n", "<leader>th", ":split | terminal<CR>")
+-- map("n", "<C-Right>", ":vertical res +1<CR>")
+-- map("n", "<C-Left>", ":vertical res -1<CR>")
+-- map("n", "<C-Up>", ":res +1<CR>")
+-- map("n", "<C-Down>", ":res -1<Cr>")
 
 local M = {}
 
