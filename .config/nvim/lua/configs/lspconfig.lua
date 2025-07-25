@@ -35,3 +35,9 @@ lspconfig.ts_ls.setup {
   on_init = nvlsp.on_init,
   capabilities = nvlsp.capabilities,
 }
+
+local project = require "project"
+
+if project.is_godot_project then
+  lspconfig.gdscript.setup {}
+end

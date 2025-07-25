@@ -14,6 +14,21 @@ return {
   },
 
   {
+    "nvim-tree/nvim-tree.lua",
+    opts = {
+      sync_root_with_cwd = true,
+      respect_buf_cwd = true,
+      update_focused_file = {
+        enable = true,
+        update_root = true,
+      },
+      filters = {
+        custom = { "\\gd.uid$" },
+      },
+    },
+  },
+
+  {
     "pmizio/typescript-tools.nvim",
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
     -- lazy = false,
@@ -90,13 +105,36 @@ return {
     dependencies = { "kevinhwang91/promise-async" },
   },
 
-  -- {
-  -- 	"nvim-treesitter/nvim-treesitter",
-  -- 	opts = {
-  -- 		ensure_installed = {
-  -- 			"vim", "lua", "vimdoc",
-  --      "html", "css"
-  -- 		},
-  -- 	},
-  -- },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        "vim",
+        "lua",
+        "vimdoc",
+        "html",
+        "css",
+        "gdscript",
+        "godot_resource",
+        "gdshader",
+      },
+      hightlight = {
+        enable = true,
+      },
+    },
+  },
+
+  {
+
+    "rmagatti/auto-session",
+    lazy = false,
+
+    ---enables autocomplete for opts
+    ---@module "auto-session"
+    ---@type AutoSession.Config
+    opts = {
+      suppressed_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
+      -- log_level = 'debug',
+    },
+  },
 }

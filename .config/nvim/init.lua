@@ -40,3 +40,14 @@ vim.cmd [[highlight TabLineFill ctermfg=black]]
 vim.schedule(function()
   require "mappings"
 end)
+
+-- Set up for Godot projects.
+
+local project = require "project"
+
+-- check if server is already running in godot project path
+local is_server_running = vim.uv.fs_stat(project.godot_project_path .. "/server.pipe")
+-- start server, if not already running
+if project.is_godot_project and not is_server_running then
+  vim.fn.serverstart(project.godot_project_path .. "/server.pipe")
+end

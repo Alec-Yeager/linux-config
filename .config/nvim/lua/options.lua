@@ -13,6 +13,9 @@ vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decr
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
 vim.o.winborder = "rounded"
+vim.o.tabstop = 4
+vim.o.softtabstop = 4
+vim.o.shiftwidth = 4
 
 -- local o = vim.o
 -- o.cursorlineopt ='both' -- to enable cursorline!
