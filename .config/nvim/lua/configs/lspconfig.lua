@@ -11,6 +11,22 @@ nvlsp.capabilities.textDocument.foldingRange = {
   dynamicRegistration = false,
   lineFoldingOnly = true,
 }
+
+lspconfig.lua_ls.setup({
+  cmd = { "lua-language-server" },
+})
+
+-- lspconfig.pyright.setup({
+--   cmd = {
+--     "node",
+--     vim.fn.stdpath("data") .. "/mason/packages/pyright/node_modules/pyright/langserver.index.js",
+--     "--stdio"
+--   },
+--   on_attach = nvlsp.on_attach,
+--   on_init = nvlsp.on_init,
+--   capabilities = nvlsp.capabilities,
+-- })
+
 -- lsps with default config
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {

@@ -51,3 +51,16 @@ local is_server_running = vim.uv.fs_stat(project.godot_project_path .. "/server.
 if project.is_godot_project and not is_server_running then
   vim.fn.serverstart(project.godot_project_path .. "/server.pipe")
 end
+
+-- For autoreloading pyenv
+vim.api.nvim_create_autocmd('VimEnter', {
+  desc = 'Auto select virtualenv Nvim open',
+  pattern = '*',
+  callback = function()
+    local venv = vim.fn.findfile('pyproject.toml', vim.fn.getcwd() .. ';')
+    if venv ~= '' then
+      require('venv-selector').retrieve_from_cache()
+    end
+  end,
+  once = true,
+})
