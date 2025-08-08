@@ -1,7 +1,7 @@
 format = """
 [](#7e62b3)\
 $os\
-[󰣇 ](bg:#7e62b3)\
+[ ](bg:#7e62b3)\
 $username\
 [](bg:#5e468c fg:#7e62b3)\
 $directory\
@@ -150,8 +150,9 @@ format = '[ $symbol ($version) ]($style)'
 
 [python]
 symbol = " "
-style = "bg:#86BBD8"
-format = "[ $symbol($virtualenv) ]($style)"
+style = "bg:#86BBD8 fg:#444444" 
+pyenv_version_name = true
+format = "[ $symbol($version) ]($style)"
 
 [time]
 disabled = false
