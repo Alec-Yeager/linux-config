@@ -85,6 +85,12 @@ install_nerdfont() {
 EOF
 }
 
+# ========== INSTALL DIRENV ==========
+install_nvm(){
+    log "Installing nvm..."
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+}
+
 # ========== INSTALL PYENV ==========
 install_pyenv() {
     log "Installing pyenv dependencies for $OS_BASE..."
@@ -95,10 +101,10 @@ install_pyenv() {
             sudo apt install -y make build-essential libssl-dev zlib1g-dev \
                 libbz2-dev libreadline-dev libsqlite3-dev curl git \
                 libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev \
-                libffi-dev liblzma-dev
+                libffi-dev liblzma-dev direnv
             ;;
         arch)
-            sudo pacman -S --needed --noconfirm base-devel openssl zlib xz tk zstd
+            sudo pacman -S --needed --noconfirm base-devel direnv openssl zlib xz tk zstd
             ;;
         *)
             warn "Pyenv build dependencies not defined for $OS_BASE."
@@ -130,6 +136,7 @@ install_starship
 install_neovim
 install_nerdfont
 install_pyenv
+install_nvm
 set_defaults
 
 log "✅ Setup complete for $OS_NAME!"
