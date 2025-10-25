@@ -75,7 +75,6 @@ install_starship() {
 install_general_packages() {
     log "Installing kitty, zoxide, zsh, luarocks..."
     eval "$PKG_INSTALL kitty zoxide zsh luarocks" || warn "Some packages may not be found on this distro."
-    eval "chsh -s $(command -v zsh)"
 }
 
 # ========== INSTALL NERD FONT ==========
@@ -113,6 +112,8 @@ install_pyenv() {
 }
 
 set_defaults() {
+    log "Setting zsh as default..."
+    eval "sudo chsh -s $(command -v zsh)"
     log "Setting Kitty as default terminal..."
     # Debian/Ubuntu only: set kitty as system terminal alternative
     if [[ "$OS_BASE" == "debian" ]] && command -v update-alternatives &>/dev/null; then
