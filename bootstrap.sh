@@ -112,14 +112,15 @@ install_pyenv() {
 }
 
 set_defaults() {
-    log "Setting zsh as default..."
-    eval "sudo chsh -s $(command -v zsh)"
-    log "Setting Kitty as default terminal..."
+        log "Setting Kitty as default terminal..."
     # Debian/Ubuntu only: set kitty as system terminal alternative
     if [[ "$OS_BASE" == "debian" ]] && command -v update-alternatives &>/dev/null; then
         sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator "$(command -v kitty)" 50 || true
         sudo update-alternatives --set x-terminal-emulator "$(command -v kitty)" || true
     fi
+    log "Setting zsh as default..."
+    eval "sudo chsh -s $(command -v zsh)"
+
 }
 
 
@@ -129,6 +130,7 @@ install_starship
 install_neovim
 install_nerdfont
 install_pyenv
+set_defaults
 
 log "✅ Setup complete for $OS_NAME!"
 
