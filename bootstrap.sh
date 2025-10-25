@@ -75,6 +75,7 @@ install_starship() {
 install_general_packages() {
     log "Installing kitty, zoxide, zsh, luarocks..."
     eval "$PKG_INSTALL kitty zoxide zsh luarocks" || warn "Some packages may not be found on this distro."
+    eval "chsh -s $(command -v zsh)"
 }
 
 # ========== INSTALL NERD FONT ==========
@@ -110,6 +111,16 @@ install_pyenv() {
         curl -fsSL https://pyenv.run | bash
     fi
 }
+
+set_defaults() {
+    log "Setting Kitty as default terminal..."
+    # Debian/Ubuntu only: set kitty as system terminal alternative
+    if [[ "$OS_BASE" == "debian" ]] && command -v update-alternatives &>/dev/null; then
+        sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator "$(command -v kitty)" 50 || true
+        sudo update-alternatives --set x-terminal-emulator "$(command -v kitty)" || true
+    fi
+}
+
 
 # ========== RUN EVERYTHING ==========
 install_general_packages

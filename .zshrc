@@ -19,6 +19,8 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 export EDITOR=nvim
+export VISUAL=nvim
+export SUDO_EDITOR=nvim
 export TERMINAL=kitty
 export COLORSCHEME_FOLDER="~/Arch/ColorSchemes/"
 export GTK_IM_MODULE=fcitx
@@ -33,7 +35,6 @@ bindkey "^[[1;5D" backward-word
 #powerline-daemon -q
 #. /usr/share/powerline/bindings/zsh/powerline.zsh
 eval "$(starship init zsh)"
-. /usr/share/z/z.sh
 
 source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 export PATH="$PATH:/home/Vozrazhat/.dotnet/tools"
