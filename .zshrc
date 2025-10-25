@@ -51,12 +51,13 @@ export NVM_DIR
 
 # "nvm exec" and certain 3rd party scripts expect "nvm.sh" and "nvm-exec" to
 # exist under $NVM_DIR
+# this may be legacy bullshit, but it doesn't seem to hurt.
 [ ! -e "$NVM_DIR" ] && mkdir -vp "$NVM_DIR"
 [ ! -e "$NVM_DIR/nvm.sh" ] && ln -vs /usr/share/nvm/nvm.sh "$NVM_DIR/nvm.sh"
 [ ! -e "$NVM_DIR/nvm-exec" ] && ln -vs /usr/share/nvm/nvm-exec "$NVM_DIR/nvm-exec"
 
-. /usr/share/nvm/nvm.sh
-. /usr/share/nvm/bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
