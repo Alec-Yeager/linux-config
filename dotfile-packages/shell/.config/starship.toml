@@ -1,7 +1,7 @@
 format = """
 [](#7e62b3)\
 $os\
-[ ](bg:#7e62b3)\
+[󰣇 ](bg:#7e62b3)\
 $username\
 [](bg:#5e468c fg:#7e62b3)\
 $directory\

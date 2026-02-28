@@ -115,7 +115,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+#bindsym $mod+Shift+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -163,6 +163,8 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 # move workspace to left/right monitor
 bindsym $mod+greater move workspace to output right
 bindsym $mod+less move workspace to output left
+bindsym $mod+Shift+greater move workspace to output up
+bindsym $mod+Shift+less move workspace to output down
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -170,6 +172,10 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+bindsym Ctrl+Shift+3 exec "flameshot gui -p ~/Media/Screenshots"
+bindsym Ctrl+Shift+2 exec "flameshot full -p ~/Media/Screenshots"
+bindsym $mod+Ctrl+c exec "/home/Vozrazhat/Arch/StartupScripts/ConnectVozphones.sh"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -233,4 +239,5 @@ exec --no-startup-id i3-msg "workspace 10; exec pavucontrol"
 exec --no-startup-id i3-msg "workspace 10; exec qpwgraph"
 exec --no-startup-id i3-msg "workspace 10; exec terminator -p alsamixerterm"
 exec --no-startup-id picom -b
+exec --no-startup-id fcitx5
 exec_always --no-startup-id ~/.config/polybar/i3launch.sh
