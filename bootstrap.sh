@@ -49,9 +49,11 @@ else
     git -C "$TARGET_DIR/linux-config" pull
 fi
 
-# ========== COPY DOTFILES ==========
-log "Copying dotfiles..."
-cp -r "$TARGET_DIR/linux-config"/.[!.]* "$HOME"/ 2>/dev/null || true
+# ========== SETUP STOW ==========
+log "Linking dotfiles..."
+#cp -r "$TARGET_DIR/linux-config"/.[!.]* "$HOME"/ 2>/dev/null || true
+eval "$PKG_INSTALL stow" || warn "Stow not available. Failed to link dotfiles."
+stow -d $TARGET_DIR/linux-config/dotfiles -t $HOME .
 
 # ========== INSTALL NEOVIM (GLOBAL) ==========
 install_neovim() {
