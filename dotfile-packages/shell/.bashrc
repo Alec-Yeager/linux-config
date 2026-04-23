@@ -5,10 +5,23 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 alias ll="ls -alrth"
-alias config='/usr/bin/git --git-dir=/home/Vozrazhat/.cfg/ --work-tree=/home/Vozrazhat'
+alias resource="source ~/.bashrc"
 
 export EDITOR=nvim
+export SUDO_EDITOR=$(which nvim)
+export VISUAL=$(which nvim)
 export TERMINAL=kitty
 export QT_QPA_PLATFORMTHEME=qt6ct
-export COLORSCHEME_FOLDER="~/Arch/ColorSchemes/"
-export PATH="$PATH:/home/Vozrazhat/.dotnet/tools"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+eval "$(starship init bash)"
+eval "$(zoxide init bash)"
+
+# Bespoke exports for each machine. Things like CMAKE_PREFIX_PATH
+if [ -f ~/.bash_variables ]; then
+    . ~/.bash_variables
+fi
