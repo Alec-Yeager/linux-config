@@ -53,7 +53,7 @@ fi
 log "Linking dotfiles..."
 #cp -r "$TARGET_DIR/linux-config"/.[!.]* "$HOME"/ 2>/dev/null || true
 eval "$PKG_INSTALL stow" || warn "Stow not available. Failed to link dotfiles."
-stow -d $TARGET_DIR/linux-config/dotfiles -t $HOME .
+stow -d $TARGET_DIR/linux-config/dotfile-packages -t $HOME nvim i3 kitty shell
 
 # ========== INSTALL NEOVIM (GLOBAL) ==========
 install_neovim() {
