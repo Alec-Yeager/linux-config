@@ -6,8 +6,14 @@ setopt autocd extendedglob nomatch
 unsetopt beep
 bindkey -v
 
+if [[ -f /etc/os-release ]]; then
+    OS_NAME=$(. /etc/os-release && echo "${NAME%% *}")
+    export OS_DIR=${HOME}/${OS_NAME}
+else
+    export OS_DIR=${HOME}/Linux
+fi
 
--zstyle :compinstall filename '${HOME}/.zshrc'
+zstyle :compinstall filename "${HOME}/.zshrc"
 autoload -Uz compinit
 compinit
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
@@ -17,8 +23,8 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-if [ -f ~/.bash_local ]; then
-    . ~/.bash_local
+if [ -f ~/.zsh_local ]; then
+    . ~/.zsh_local
 fi
 
 export EDITOR=nvim
