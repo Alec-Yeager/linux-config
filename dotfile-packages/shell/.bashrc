@@ -25,3 +25,10 @@ eval "$(zoxide init bash)"
 if [ -f ~/.bash_variables ]; then
     . ~/.bash_variables
 fi
+
+. ~/.bashrc_mujin
+
+# mussh
+export PATH="${HOME}/mujin/ssh/bin:${PATH}"
+[ ! -e /.dockerenv ] && mussh start
+
