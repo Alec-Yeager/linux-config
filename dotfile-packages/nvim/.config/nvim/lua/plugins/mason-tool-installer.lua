@@ -5,6 +5,7 @@ return {
     opts = {
         ensure_installed = {
             "tree-sitter-cli",
+            "prettier",
             "clangd",
             "ruff",
             "lua_ls",
