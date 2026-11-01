@@ -14,3 +14,5 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.signcolumn = "yes"
 vim.opt.scrolloff = 8
+vim.o.inccommand = "split"
+vim.cmd.packadd("nvim.undotree")
