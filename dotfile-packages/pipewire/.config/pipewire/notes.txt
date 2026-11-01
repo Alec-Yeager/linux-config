@@ -1,0 +1,16 @@
+Pipewire uses this folder to populate different audio pipelines. No idea yet how to process them.
+
+This is handled by a module called filter-chain, which creates nodes for inputs and outputs.
+The plugins that things are run through are LADSPA plugins, which come in files found in:
+/user/lib.ladspa/xxx.so
+The controls supplied by the .so can be seen using analyseplugin on the file.
+
+The .so files I downloaded were:
+
+main repos:
+lsp-plugins
+supplies lsp-plugins-ladspa.so
+
+AUR:
+libdeep_filter_ladspa-bin
+supplies libdeep_filter_ladspa.so

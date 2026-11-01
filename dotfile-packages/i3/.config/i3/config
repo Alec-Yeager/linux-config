@@ -173,9 +173,11 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
-bindsym Ctrl+Shift+3 exec "flameshot gui -p ~/Media/Screenshots"
-bindsym Ctrl+Shift+2 exec "flameshot full -p ~/Media/Screenshots"
+bindsym Ctrl+Shift+3 exec "flameshot gui --clipboard -p ~/Media/Screenshots"
+bindsym Ctrl+Shift+2 exec "flameshot full --clipboard -p ~/Media/Screenshots"
 bindsym $mod+Ctrl+c exec "/home/Vozrazhat/Arch/StartupScripts/ConnectVozphones.sh"
+bindsym $mod+Ctrl+s exec "systemctl sleep"
+bindsym $mod+Ctrl+m exec "/home/Vozrazhat/.screenlayout/Standard.sh"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -234,9 +236,12 @@ client.background       #FFFFFF
 #        status_command i3status
 #}
 
+# Custom demand for floating windows as needed. Mostly GLFW shit.
+for_window [class="Dear ImGui VTKViewer Example"] floating enable
+
 exec --no-startup-id i3-msg "workspace 10; append_layout /home/Vozrazhat/.config/i3/workspace_10.json"
 exec --no-startup-id i3-msg "workspace 10; exec pavucontrol"
-exec --no-startup-id i3-msg "workspace 10; exec qpwgraph"
+exec --no-startup-id i3-msg "workspace 10; exec qpwgraph & sleep 2"
 exec --no-startup-id i3-msg "workspace 10; exec terminator -p alsamixerterm"
 exec --no-startup-id picom -b
 exec --no-startup-id fcitx5

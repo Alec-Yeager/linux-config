@@ -8,6 +8,8 @@ while pgrep -x polybar >/dev/null; do sleep 0.1; done
 
 polybar --reload 4k &
 polybar --reload 2k &
+polybar --reload 2kSplit &
+polybar --reload 4kSplit &
 polybar --reload upper &
 
 # Launch polybar
