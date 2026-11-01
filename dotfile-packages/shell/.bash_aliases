@@ -1,5 +1,17 @@
 alias ll="ls -alhrt"
-alias alcom="WEBKIT_DISABLE_DMABUF_RENDERER=1 alcom"
+alias gmm="git fetch; git pull; git merge origin/master"
+alias gcm="git commit -m"
+alias gs="git status"
+alias gsw="git switch"
+alias gswm="git switch master"
+alias gpr="git pull --recurse-submodules && git submodule update --init --recursive"
+
+if [ -n "$ZSH_VERSION" ]; then
+    alias resource="source ~/.zshrc"
+elif [ -n "$BASH_VERSION" ]; then
+    alias resource="source ~/.bashrc"
+fi
+
 unspace() {
     local target="${1:-.}"
 
@@ -53,4 +65,3 @@ unspace() {
             || mv -v -n -- "$target" "$dir/$new_name"
     fi
 }
-alias resource="source ~/.zshrc"
