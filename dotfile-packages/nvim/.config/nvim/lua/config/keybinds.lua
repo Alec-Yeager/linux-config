@@ -2,7 +2,12 @@
 
 local f = require("config.functions")
 
-vim.keymap.set("n", "<leader>oe", "<cmd>Oil<CR>", { desc = "Open NetRW" })
+vim.keymap.set("n", "<leader>oe", "<cmd>Oil<CR>", { desc = "Open Oil" })
+vim.keymap.set("n", "<leader>e", function()
+	local width = math.min(math.floor(vim.o.columns / 3), 40)
+	vim.cmd("leftabove " .. width .. "vsplit | Oil")
+	vim.wo.winfixwidth = true
+end, { desc = "Open Oil on the side" })
 vim.keymap.set("n", "<C-s>", "<cmd>w<CR>", { desc = "Save file" })
 vim.keymap.set("i", "<C-s>", "<Esc><cmd>w<CR>a", { desc = "Save file" })
 vim.keymap.set("n", "<C-z>", "u", { desc = "Undo" })
@@ -21,7 +26,7 @@ vim.keymap.set("n", "<leader>sh", "<cmd>sp<CR>", { desc = "Split horizontal" })
 vim.keymap.set("n", "<leader>sv", "<cmd>vs<CR>", { desc = "Split vertical" })
 
 vim.keymap.set("n", "<leader>bl", "<cmd>buffers<CR>", { desc = "List buffers" })
-vim.keymap.set("n", "<leader>bs", "<cmd>b", { desc = "Switch buffers" })
+vim.keymap.set("n", "<leader>bs", ":b", { desc = "Switch buffers" })
 
 vim.keymap.set("n", "<leader>tv", "<cmd>vsplit | terminal<CR>a")
 vim.keymap.set("n", "<leader>th", "<cmd>split | terminal<CR>a")
