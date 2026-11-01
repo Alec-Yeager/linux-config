@@ -2,12 +2,16 @@
 
 local f = require("config.functions")
 
-vim.keymap.set("n", "<leader>oe", ":Ex<CR>", { desc = "Open NetRW" })
+vim.keymap.set("n", "<leader>oe", "<cmd>Oil<CR>", { desc = "Open NetRW" })
 vim.keymap.set("n", "<C-s>", ":w<CR>", { desc = "Save file" })
 vim.keymap.set("i", "<C-s>", "<Esc>:w<CR>a", { desc = "Save file" })
 vim.keymap.set("n", "<C-z>", "u", { desc = "Undo" })
-vim.keymap.set("i", "<C-z>", "<Esc>u<CR>a", { desc = "Undo" })
-vim.keymap.set({ "i", "n" }, "<C-y>", "<C-r>", { desc = "Redo" })
+vim.keymap.set("i", "<C-z>", "<C-o>u", { desc = "Undo" })
+vim.keymap.set("i", "<C-y>", "<C-o><C-r>", { desc = "Redo" })
+vim.keymap.set("n", "<C-y>", "<C-r>", { desc = "Redo" })
+
+vim.keymap.set("n", "<C-h>", ":noh<CR>")
+vim.keymap.set("i", "<C-h>", "<Esc>:noh<CR>a")
 
 vim.keymap.set("n", "<leader>rc", ":restart<CR>", { desc = "Reload config" })
 vim.keymap.set("n", "<leader>x", ":q<CR>", { desc = "Close window" })
@@ -35,7 +39,7 @@ _G.current_layout = "glove"
 local allmodes = { "n", "v", "o" }
 local qwerty_mappings = {
 
-    { { "n", }, "K", f.hover_or_lookup, "LSP Hover / Lookup" },
+    { { "n" }, "K", f.hover_or_lookup, "LSP Hover / Lookup" },
 }
 
 local glove_mappings = {
@@ -50,7 +54,7 @@ local glove_mappings = {
 
     -- Uppercase variants
     { allmodes, "T", "J",               "Join lines" },
-    { { "n", }, "N", f.hover_or_lookup, "LSP Hover / Lookup" },
+    { { "n" },  "N", f.hover_or_lookup, "LSP Hover / Lookup" },
     { allmodes, "S", "L",               "Move to screen bottom" },
 
     { allmodes, "J", "T",               "Till search backward" },
