@@ -2,8 +2,8 @@
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
-setopt autocd extendedglob nomatch
-unsetopt beep
+setopt autocd extendedglob nomatch HIST_IGNORE_DUPS
+unsetopt beep auto_remove_slash
 bindkey -v
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
@@ -52,5 +52,6 @@ eval "$(zoxide init zsh)"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-unsetopt auto_remove_slash
-setopt HIST_IGNORE_DUPS
+
+. "$HOME/Arch/lib/vulkan/1.4.357.0/setup-env.sh"
+export PATH="$HOME/.local/bin:$PATH"
