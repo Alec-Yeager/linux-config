@@ -16,3 +16,8 @@ vim.opt.signcolumn = "yes"
 vim.opt.scrolloff = 8
 vim.o.inccommand = "split"
 vim.cmd.packadd("nvim.undotree")
+vim.cmd.packadd("nohlsearch")
+
+for _, group in ipairs({ "LspReferenceText", "LspReferenceRead", "LspReferenceWrite" }) do
+	vim.api.nvim_set_hl(0, group, { bg = "#2a2a2a" })
+end
