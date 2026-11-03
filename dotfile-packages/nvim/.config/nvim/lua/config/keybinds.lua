@@ -3,6 +3,7 @@
 local f = require("config.functions")
 
 vim.keymap.set("n", "<leader>oe", "<cmd>Oil<CR>", { desc = "Open Oil" })
+vim.keymap.set("n", "-", "<cmd>Oil<CR>", { desc = "Open Oil" })
 vim.keymap.set("n", "<leader>e", function()
 	local width = math.min(math.floor(vim.o.columns / 3), 40)
 	vim.cmd("leftabove " .. width .. "vsplit | Oil")
@@ -41,11 +42,22 @@ vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help ta
 vim.keymap.set("n", "<leader>fo", builtin.grep_string, { desc = "Telescope find string" })
 vim.keymap.set("n", "<leader>fr", builtin.resume, { desc = "Reopen last search" })
 vim.keymap.set("n", "<leader>fp", builtin.oldfiles, { desc = "Recent files" })
-vim.keymap.set("n", "<leader>fs", builtin.lsp_document_symbols, { desc = "Symbols in file" })
 vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "Diagnostics" })
 vim.keymap.set("n", "<leader>fk", builtin.keymaps, { desc = "Search keymaps" })
 vim.keymap.set("n", "<leader>f/", builtin.current_buffer_fuzzy_find, { desc = "Fuzzy find in file" })
-
+vim.keymap.set("n", "grr", builtin.lsp_references, { desc = "LSP references" })
+vim.keymap.set("n", "gri", builtin.lsp_implementations, { desc = "LSP implementations" })
+vim.keymap.set("n", "grt", builtin.lsp_type_definitions, { desc = "LSP type definitions" })
+vim.keymap.set("n", "gO", builtin.lsp_document_symbols, { desc = "Document symbols" })
+local function SearchDir()
+	return require("oil").get_current_dir() or vim.fn.expand("%:p:h")
+end
+vim.keymap.set("n", "<leader>fF", function()
+	builtin.find_files({ cwd = SearchDir() })
+end, { desc = "Find files in current dir" })
+vim.keymap.set("n", "<leader>fG", function()
+	builtin.live_grep({ cwd = SearchDir() })
+end, { desc = "Live grep in current dir" })
 vim.keymap.set("n", "<leader>u", "<cmd>Undotree<CR>", { desc = "Open undo tree" })
 
 -- git
@@ -60,6 +72,9 @@ vim.keymap.set("n", "<leader>gp", gs.preview_hunk, { desc = "Preview hunk" })
 vim.keymap.set("n", "<leader>gs", gs.stage_hunk, { desc = "Stage hunk" })
 vim.keymap.set("n", "<leader>gr", gs.reset_hunk, { desc = "Discard hunk" })
 vim.keymap.set("n", "<leader>gb", gs.blame_line, { desc = "Blame line" })
+
+-- markdown
+vim.api.nvim_set_keymap("n", "<leader>mv", "<CMD>Markview<CR>", { desc = "Toggles `markview` previews globally." })
 
 -- For the ergo lol
 _G.current_layout = "glove"
