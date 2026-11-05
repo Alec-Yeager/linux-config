@@ -26,8 +26,13 @@ vim.keymap.set("n", "<leader>lu", "<cmd>Lazy<CR>U", { desc = "Open LazyVim, Upda
 vim.keymap.set("n", "<leader>sh", "<cmd>sp<CR>", { desc = "Split horizontal" })
 vim.keymap.set("n", "<leader>sv", "<cmd>vs<CR>", { desc = "Split vertical" })
 
+-- Buffers
 vim.keymap.set("n", "<leader>bl", "<cmd>buffers<CR>", { desc = "List buffers" })
 vim.keymap.set("n", "<leader>bs", ":b", { desc = "Switch buffers" })
+vim.keymap.set("n", "<leader>b<left>", "<cmd>bprevious<CR>", { desc = "Previous buffer" })
+vim.keymap.set("n", "<leader>b<right>", "<cmd>bnext<CR>", { desc = "Next buffer" })
+vim.keymap.set("n", "<leader>q", ":bp | :bd #<CR>", { silent = true, desc = "Close buffer" })
+vim.keymap.set("n", "<leader>Q", ":bp | :bd! #<CR>", { silent = true, desc = "Force close buffer" })
 
 vim.keymap.set("n", "<leader>tv", "<cmd>vsplit | terminal<CR>a")
 vim.keymap.set("n", "<leader>th", "<cmd>split | terminal<CR>a")
