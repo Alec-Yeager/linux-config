@@ -6,9 +6,9 @@ local f = require("config.functions")
 vim.keymap.set("n", "<leader>oe", "<cmd>Oil<CR>", { desc = "Open Oil" })
 vim.keymap.set("n", "-", "<cmd>Oil<CR>", { desc = "Open Oil" })
 vim.keymap.set("n", "<leader>e", function()
-    local width = math.min(math.floor(vim.o.columns / 3), 40)
-    vim.cmd("leftabove " .. width .. "vsplit | oil")
-    vim.wo.winfixwidth = true
+	local width = math.min(math.floor(vim.o.columns / 3), 40)
+	vim.cmd("leftabove " .. width .. "vsplit | oil")
+	vim.wo.winfixwidth = true
 end, { desc = "Open Oil on the side" })
 
 -- Windows habits
@@ -56,29 +56,31 @@ vim.keymap.set("n", "gri", telescope.lsp_implementations, { desc = "LSP implemen
 vim.keymap.set("n", "grt", f.goto_type, { desc = "Go to type" })
 vim.keymap.set("n", "gO", telescope.lsp_document_symbols, { desc = "Document symbols" })
 local function SearchDir()
-    return require("oil").get_current_dir() or vim.fn.expand("%:p:h")
+	return require("oil").get_current_dir() or vim.fn.expand("%:p:h")
 end
 vim.keymap.set("n", "<leader>fF", function()
-    telescope.find_files({ cwd = SearchDir() })
+	telescope.find_files({ cwd = SearchDir() })
 end, { desc = "Find files in current dir" })
 vim.keymap.set("n", "<leader>fG", function()
-    telescope.live_grep({ cwd = SearchDir() })
+	telescope.live_grep({ cwd = SearchDir() })
 end, { desc = "Live grep in current dir" })
-vim.keymap.set('n', 'grh', '<cmd>LspClangdSwitchSourceHeader<cr>', { desc = 'Switch Source/Header (C/C++)' })
-
+vim.keymap.set("n", "grh", "<cmd>LspClangdSwitchSourceHeader<cr>", { desc = "Switch Source/Header (C/C++)" })
 
 -- git
 local gs = require("gitsigns")
 vim.keymap.set("n", "]h", function()
-    gs.nav_hunk("next")
+	gs.nav_hunk("next")
 end, { desc = "Next hunk" })
 vim.keymap.set("n", "[h", function()
-    gs.nav_hunk("prev")
+	gs.nav_hunk("prev")
 end, { desc = "Previous hunk" })
 vim.keymap.set("n", "<leader>gp", gs.preview_hunk, { desc = "Preview hunk" })
 vim.keymap.set("n", "<leader>gs", gs.stage_hunk, { desc = "Stage hunk" })
 vim.keymap.set("n", "<leader>gr", gs.reset_hunk, { desc = "Discard hunk" })
 vim.keymap.set("n", "<leader>gb", gs.blame_line, { desc = "Blame line" })
+vim.keymap.set("n", "<leader>gv", ":DiffviewOpen<CR>", { desc = "Open git diff view" })
+vim.keymap.set("n", "<leader>gdm", ":DiffviewOpen origin/master..HEAD<CR>", { desc = "Open git diff against master" })
+vim.keymap.set("n", "<leader>gc", ":DiffviewClose<CR>", { desc = "Close git diff view" })
 
 -- markdown
 vim.api.nvim_set_keymap("n", "<leader>mv", "<CMd>Markview<CR>", { desc = "Toggles `markview` previews globally." })
@@ -86,10 +88,12 @@ vim.api.nvim_set_keymap("n", "<leader>mv", "<CMd>Markview<CR>", { desc = "Toggle
 -- dap
 local dap = require("dap")
 vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, { desc = "Toggle breakpoint" })
-vim.keymap.set("n", "<leader>dB", function() dap.set_breakpoint(vim.fn.input("Condition: ")) end,
-    { desc = "Conditional breakpoint" })
-vim.keymap.set("n", "<leader>dl", function() dap.set_breakpoint(nil, nil, vim.fn.input("Log message: ")) end,
-    { desc = "Logpoint" })
+vim.keymap.set("n", "<leader>dB", function()
+	dap.set_breakpoint(vim.fn.input("Condition: "))
+end, { desc = "Conditional breakpoint" })
+vim.keymap.set("n", "<leader>dl", function()
+	dap.set_breakpoint(nil, nil, vim.fn.input("Log message: "))
+end, { desc = "Logpoint" })
 vim.keymap.set("n", "<leader>dc", dap.continue, { desc = "Start / continue" })
 vim.keymap.set("n", "<leader>dr", dap.run_last, { desc = "Re-run last config" }) -- skips the prompts
 vim.keymap.set("n", "<leader>dC", dap.run_to_cursor, { desc = "Run to cursor" })
@@ -110,41 +114,41 @@ _G.current_layout = "glove"
 local allmodes = { "n", "v", "o" }
 local qwerty_mappings = {
 
-    { { "n" }, "K", f.hover_or_lookup, "LSP Hover / Lookup" },
+	{ { "n" }, "K", f.hover_or_lookup, "LSP Hover / Lookup" },
 }
 
 local glove_mappings = {
 
-    { allmodes, "t", "j",               "Move down" },
-    { allmodes, "n", "k",               "Move up" },
-    { allmodes, "s", "l",               "Move right" },
+	{ allmodes, "t", "j", "Move down" },
+	{ allmodes, "n", "k", "Move up" },
+	{ allmodes, "s", "l", "Move right" },
 
-    { allmodes, "j", "t",               "Till search forward" },
-    { allmodes, "k", "n",               "Next search match" },
-    { allmodes, "l", "s",               "Substitute character" },
+	{ allmodes, "j", "t", "Till search forward" },
+	{ allmodes, "k", "n", "Next search match" },
+	{ allmodes, "l", "s", "Substitute character" },
 
-    -- Uppercase variants
-    { allmodes, "T", "J",               "Join lines" },
-    { { "n" },  "N", f.hover_or_lookup, "LSP Hover / Lookup" },
-    { allmodes, "S", "L",               "Move to screen bottom" },
+	-- Uppercase variants
+	{ allmodes, "T", "J", "Join lines" },
+	{ { "n" }, "N", f.hover_or_lookup, "LSP Hover / Lookup" },
+	{ allmodes, "S", "L", "Move to screen bottom" },
 
-    { allmodes, "J", "T",               "Till search backward" },
-    { allmodes, "K", "N",               "Previous search match" },
-    { allmodes, "L", "S",               "Substitute line" },
+	{ allmodes, "J", "T", "Till search backward" },
+	{ allmodes, "K", "N", "Previous search match" },
+	{ allmodes, "L", "S", "Substitute line" },
 }
 
 f.apply_mappings(glove_mappings, "glove")
 
 function toggle_keyboard_layout()
-    if _G.current_layout == "qwerty" then
-        f.clear_mappings(qwerty_mappings)
-        f.apply_mappings(glove_mappings, "glove")
-        print("Layout switched to glove")
-    else
-        f.clear_mappings(glove_mappings)
-        f.apply_mappings(qwerty_mappings, "qwerty")
-        print("Layout switched to qwerty")
-    end
+	if _G.current_layout == "qwerty" then
+		f.clear_mappings(qwerty_mappings)
+		f.apply_mappings(glove_mappings, "glove")
+		print("Layout switched to glove")
+	else
+		f.clear_mappings(glove_mappings)
+		f.apply_mappings(qwerty_mappings, "qwerty")
+		print("Layout switched to qwerty")
+	end
 end
 
 vim.keymap.set("n", "<leader>tk", toggle_keyboard_layout, { noremap = true, desc = "Toggle between qwerty and glove" })
