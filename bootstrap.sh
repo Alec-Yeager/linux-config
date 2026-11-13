@@ -92,6 +92,7 @@ install_starship() {
 install_general_packages() {
     log "Installing kitty, zoxide, zsh, luarocks, tmux, ripgrep, unzip..."
     eval "$PKG_INSTALL kitty zoxide zsh luarocks tmux ripgrep unzip" || warn "Some packages may not be found on this distro."
+    git clone https://github.com/tmux-plugins/tpm ${HOME}/.tmux/plugins/tpm
 }
 
 # ========== INSTALL NERD FONT ==========
