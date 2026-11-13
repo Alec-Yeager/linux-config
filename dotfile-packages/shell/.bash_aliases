@@ -5,6 +5,7 @@ alias gs="git status"
 alias gsw="git switch"
 alias gswm="git switch master"
 alias gpr="git pull --recurse-submodules && git submodule update --init --recursive"
+alias nvconf="nvim ${HOME}/.config/nvim"
 
 if [ -n "$ZSH_VERSION" ]; then
     alias resource="source ~/.zshrc"

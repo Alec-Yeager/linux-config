@@ -79,7 +79,7 @@ vim.keymap.set("n", "<leader>gs", gs.stage_hunk, { desc = "Stage hunk" })
 vim.keymap.set("n", "<leader>gr", gs.reset_hunk, { desc = "Discard hunk" })
 vim.keymap.set("n", "<leader>gb", gs.blame_line, { desc = "Blame line" })
 vim.keymap.set("n", "<leader>gv", ":DiffviewOpen<CR>", { desc = "Open git diff view" })
-vim.keymap.set("n", "<leader>gdm", ":DiffviewOpen origin/master..HEAD<CR>", { desc = "Open git diff against master" })
+vim.keymap.set("n", "<leader>gdm", ":DiffviewOpen origin/master<CR>", { desc = "Open git diff against master" })
 vim.keymap.set("n", "<leader>gc", ":DiffviewClose<CR>", { desc = "Close git diff view" })
 
 -- markdown
