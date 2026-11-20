@@ -61,7 +61,8 @@ bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 
-bindsym $mod+d exec "dmenu_run -nf '#DCDCDC' -nb '#3F3F3F' -sb '#5e468c' -sf '#FFFFFF' -fn 'monospace-14' -p 'What Seekest Thou?'"
+# bindsym $mod+d exec "dmenu_run -nf '#DCDCDC' -nb '#3F3F3F' -sb '#5e468c' -sf '#FFFFFF' -fn 'monospace-14' -p 'What Seekest Thou?'"
+bindsym $mod+d exec "rofi -show drun"
 
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
@@ -175,9 +176,9 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 bindsym Ctrl+Shift+3 exec "flameshot gui --clipboard -p ~/Media/Screenshots"
 bindsym Ctrl+Shift+2 exec "flameshot full --clipboard -p ~/Media/Screenshots"
-bindsym $mod+Ctrl+c exec "/home/Vozrazhat/Arch/StartupScripts/ConnectVozphones.sh"
 bindsym $mod+Ctrl+s exec "systemctl sleep"
-bindsym $mod+Ctrl+m exec "/home/Vozrazhat/.screenlayout/Standard.sh"
+
+bindsym $mod+Ctrl+l exec "i3lock -c 111111"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -215,34 +216,8 @@ client.placeholder      #000000 #0C0C0C #FFFFFF #000000   #0C0C0C
 
 client.background       #FFFFFF
 
-#bar {
-#  colors {
-#    background #3F3F3F
-#    statusline #FFFFFF
-#    separator  #666666
+# include config-local
 
-#    focused_workspace  #7e62b3 #5e468c #FFFFFF
-#    active_workspace   #31658c #35809a #FFFFFF
-#    inactive_workspace #395573 #31658c #FFFFFF
-#    urgent_workspace   #2F343A #900000 #FFFFFF
-#    binding_mode       #2F343A #900000 #FFFFFF
-#  }
-#  status_command i3status
-#}
-
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-#bar {
-#        status_command i3status
-#}
-
-# Custom demand for floating windows as needed. Mostly GLFW shit.
-for_window [class="Dear ImGui VTKViewer Example"] floating enable
-
-exec --no-startup-id i3-msg "workspace 10; append_layout /home/Vozrazhat/.config/i3/workspace_10.json"
-exec --no-startup-id i3-msg "workspace 10; exec pavucontrol"
-exec --no-startup-id i3-msg "workspace 10; exec qpwgraph & sleep 2"
-exec --no-startup-id i3-msg "workspace 10; exec terminator -p alsamixerterm"
 exec --no-startup-id picom -b
 exec --no-startup-id fcitx5
-exec_always --no-startup-id ~/.config/polybar/i3launch.sh
+exec_always --no-startup-id ~/.config/polybar/i3-generic.sh
