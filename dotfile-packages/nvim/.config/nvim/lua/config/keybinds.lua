@@ -78,9 +78,11 @@ vim.keymap.set("n", "<leader>gp", gs.preview_hunk, { desc = "Preview hunk" })
 vim.keymap.set("n", "<leader>gs", gs.stage_hunk, { desc = "Stage hunk" })
 vim.keymap.set("n", "<leader>gr", gs.reset_hunk, { desc = "Discard hunk" })
 vim.keymap.set("n", "<leader>gb", gs.blame_line, { desc = "Blame line" })
+vim.keymap.set("n", "<leader>gcm", ":Gitsigns change_base origin/master<CR>", { desc = "Gitsigns diff against master" })
+vim.keymap.set("n", "<leader>gch", ":Gitsigns change_base HEAD<CR>", { desc = "Gitsigns diff against HEAD" })
 vim.keymap.set("n", "<leader>gv", ":DiffviewOpen<CR>", { desc = "Open git diff view" })
 vim.keymap.set("n", "<leader>gdm", ":DiffviewOpen origin/master<CR>", { desc = "Open git diff against master" })
-vim.keymap.set("n", "<leader>gc", ":DiffviewClose<CR>", { desc = "Close git diff view" })
+vim.keymap.set("n", "<leader>gx", ":DiffviewClose<CR>", { desc = "Close git diff view" })
 
 -- markdown
 vim.api.nvim_set_keymap("n", "<leader>mv", "<CMd>Markview<CR>", { desc = "Toggles `markview` previews globally." })
